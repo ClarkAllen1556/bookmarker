@@ -7,6 +7,8 @@ defmodule BookmarkerWeb.Router do
 
   scope "/api", BookmarkerWeb do
     pipe_through :api
+
+    resources "/urls", UrlController
   end
 
   # Enables LiveDashboard only for development

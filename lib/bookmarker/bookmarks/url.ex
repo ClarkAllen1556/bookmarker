@@ -18,6 +18,6 @@ defmodule Bookmarker.Bookmarks.Url do
   def changeset(url, attrs) do
     url
     |> cast(attrs, [:title, :url, :note, :is_read, :is_archived])
-    |> validate_required([:title, :url, :note, :is_read, :is_archived])
+    |> validate_required([:url])
   end
 end
