@@ -5,15 +5,15 @@ defmodule Bookmarker.Tags.Tag do
 
   schema "tags" do
     field :name, :string
-    belongs_to :url, Bookmarker.Bookmarks.Url
+    belongs_to :url, Bookmarker.Bookmarks.Url, foreign_key: :url_id, type: :binary_id
 
     timestamps()
   end
 
   def changeset(tag, attrs) do
     tag
-    |> cast(attrs, [:name])
-    |> cast_assoc(:url, with: &Bookmarker.Bookmarks.Url.changeset/2)
+    |> cast(attrs, [:name, :url_id])
+    |> cast_assoc(:url)
     |> validate_required([:name, :url])
   end
 end
