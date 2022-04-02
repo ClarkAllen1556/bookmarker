@@ -9,6 +9,7 @@ defmodule BookmarkerWeb.Router do
     pipe_through :api
 
     resources "/urls", UrlController
+    resources "/tags", TagController
   end
 
   # Enables LiveDashboard only for development
