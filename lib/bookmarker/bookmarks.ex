@@ -52,8 +52,6 @@ defmodule Bookmarker.Bookmarks do
 
   """
   def create_url(attrs \\ %{}) do
-    IO.inspect(attrs, label: ">>>> attrs")
-
     Multi.new()
     |> Multi.insert(:url, Url.changeset(%Url{}, attrs))
     |> Repo.transaction()
