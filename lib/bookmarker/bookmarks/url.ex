@@ -11,6 +11,8 @@ defmodule Bookmarker.Bookmarks.Url do
     field :title, :string
     field :url, :string
 
+    has_many :tags, Bookmarker.Tags.Tag
+
     timestamps()
   end
 

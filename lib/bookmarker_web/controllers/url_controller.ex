@@ -1,13 +1,16 @@
 defmodule BookmarkerWeb.UrlController do
   use BookmarkerWeb, :controller
 
-  alias Bookmarker.Bookmarks
+  alias Bookmarker.{Bookmarks, Repo}
   alias Bookmarker.Bookmarks.Url
 
   action_fallback BookmarkerWeb.FallbackController
 
   def index(conn, _params) do
-    urls = Bookmarks.list_urls()
+    urls =
+      Bookmarks.list_urls()
+      |> Repo.preload(:tags)
+
     render(conn, "index.json", urls: urls)
   end
 
