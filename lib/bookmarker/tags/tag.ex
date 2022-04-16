@@ -7,7 +7,7 @@ defmodule Bookmarker.Tags.Tag do
   @foreign_key_type :binary_id
   schema "tags" do
     field :name, :string
-    belongs_to :url, Bookmarker.Bookmarks.Url, foreign_key: :url_id, type: :binary_id
+    belongs_to :url, Bookmarker.Bookmarks.Url
 
     timestamps()
   end
@@ -15,7 +15,6 @@ defmodule Bookmarker.Tags.Tag do
   def changeset(tag, attrs) do
     tag
     |> cast(attrs, [:name, :url_id])
-    |> cast_assoc(:url)
     |> validate_required([:name])
   end
 end

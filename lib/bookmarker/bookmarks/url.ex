@@ -10,7 +10,6 @@ defmodule Bookmarker.Bookmarks.Url do
     field :note, :string
     field :title, :string
     field :url, :string
-    has_many :tag, Bookmarker.Tags.Tag
 
     timestamps()
   end
