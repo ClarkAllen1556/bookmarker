@@ -15,7 +15,7 @@ defmodule BookmarkerWeb.UrlController do
   end
 
   def create(conn, %{"url" => url_params}) do
-    with {:ok, %Url{} = url} <- Bookmarks.create_url(url_params) do
+    with {:ok, %{url: url}} <- Bookmarks.create_url(url_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.url_path(conn, :show, url))

@@ -8,6 +8,8 @@ defmodule Bookmarker.Bookmarks do
 
   alias Bookmarker.Bookmarks.Url
 
+  alias Ecto.Multi
+
   @doc """
   Returns the list of urls.
 
@@ -50,9 +52,11 @@ defmodule Bookmarker.Bookmarks do
 
   """
   def create_url(attrs \\ %{}) do
-    %Url{}
-    |> Url.changeset(attrs)
-    |> Repo.insert()
+    IO.inspect(attrs, label: ">>>> attrs")
+
+    Multi.new()
+    |> Multi.insert(:url, Url.changeset(%Url{}, attrs))
+    |> Repo.transaction()
   end
 
   @doc """
